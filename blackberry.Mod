@@ -7,7 +7,7 @@ PROCEDURE -AincludeBarry
 PROCEDURE -init*
   "Barry_Init()";
 
-PROCEDURE -probe*(): LONGINT
-  "(LONGINT)Barry_Probe()";
+PROCEDURE -probe*(VAR pin: ARRAY OF CHAR): LONGINT
+  "(LONGINT)Barry_Probe((char*)pin)";
 
 END blackberry.

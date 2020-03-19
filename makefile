@@ -1,5 +1,14 @@
 INC = /usr/include/barry18
 
+all: clean libbarrywrapper libbarrywrapper_voc test link
+all0: libbarrywrapper libbarrywrapper_voc test link
+
+run: 
+	LD_LIBRARY_PATH=".:" ./test
+
+debug:
+	LD_LIBRARY_PATH=".:" ddd ./test
+
 addcontact:
 	 g++ -g -O0 -I $(INC) -lbarry -o addcontact addcontact.cc
 
@@ -16,3 +25,13 @@ test:
 
 link:
 	gcc -lbarrywrapper -L. -fPIC -g -I "/opt/voc/2/include" -L"/opt/voc/lib" -lvoc-O2  -o test test.o blackberry.o libbarrywrapper.so
+
+clean:
+		rm *.o
+		rm blackberry.c
+		rm blackberry.h
+		rm blackberry.sym
+		rm libbarrywrapper.so
+		rm test.c
+		rm test
+

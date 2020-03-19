@@ -1,5 +1,3 @@
 void Barry_Init();
 
-int Barry_Probe();
-
-
+int Barry_Probe(char * pin_string);
