@@ -77,7 +77,7 @@ void Upload(const Barry::ProbeResult &device, const Barry::Contact &contact)
  cout << "Added successfully." << endl;
 }
 
-extern "C" int Barry_addContact(char * fname, char * lname, char * email, char * phone, char * homePhone, char * mobilePhone)
+extern "C" int Barry_addContact(char * fname, char * lname, char * email, char * phone, char * homePhone, char * mobilePhone, char * workPhone, char * fax, char * notes)
 {
   Barry::Contact contact;
   Barry::Probe probe;
@@ -88,6 +88,9 @@ extern "C" int Barry_addContact(char * fname, char * lname, char * email, char *
   convert_to_cppstring(phone, contact.Phone);
   convert_to_cppstring(homePhone, contact.HomePhone);
   convert_to_cppstring(mobilePhone, contact.MobilePhone);
+  convert_to_cppstring(workPhone, contact.WorkPhone);
+  convert_to_cppstring(fax, contact.Fax);
+  convert_to_cppstring(notes, contact.Notes);
 
    Upload(probe.Get(0), contact);
 }

@@ -4,7 +4,7 @@ all: clean libbarrywrapper libbarrywrapper_voc test link
 all0: libbarrywrapper libbarrywrapper_voc test link
 
 run: 
-	LD_LIBRARY_PATH=".:" ./test
+	LD_LIBRARY_PATH=".:" ./test contacts_outlook.csv
 
 debug:
 	LD_LIBRARY_PATH=".:" ddd ./test
@@ -21,10 +21,11 @@ libbarrywrapper_voc:
 	CFLAGS="-fPIC -lbarrywrapper -L. -I. -I $(INC)" voc -sc blackberry.Mod
 
 test:
+	voc -cs outlookCSV.Mod
 	CFLAGS="-I." voc -cm test.Mod
 
 link:
-	gcc -lbarrywrapper -L. -fPIC -g -I "/opt/voc/2/include" -L"/opt/voc/lib" -lvoc-O2  -o test test.o blackberry.o libbarrywrapper.so
+	gcc -lbarrywrapper -L. -fPIC -g -I "/opt/voc/2/include" -L"/opt/voc/lib" -lvoc-O2  -o test test.o outlookCSV.o blackberry.o libbarrywrapper.so
 
 clean:
 		rm *.o
