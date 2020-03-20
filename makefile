@@ -18,7 +18,7 @@ libbarrywrapper:
 	g++ -shared -Wl,-soname,libbarrywrapper.so -FPIC -g -lbarry -o libbarrywrapper.so barrywrapper.o
 
 libbarrywrapper_voc:
-	CFLAGS="-fPIC -lbarrywrapper -L. -I." voc -sc blackberry.Mod
+	CFLAGS="-fPIC -lbarrywrapper -L. -I. -I $(INC)" voc -sc blackberry.Mod
 
 test:
 	CFLAGS="-I." voc -cm test.Mod
