@@ -41,7 +41,7 @@ BEGIN
  outlookCSV.Open(fn);
  REPEAT
    b := outlookCSV.getLine(fname, lname, email, phone, homephone, mobilephone, workphone, fax, notes);
-   IF fname[0] # 0X THEN
+   IF fname[0] # 0X & ((phone[0] # 0X) OR (homephone[0] # 0X) OR (mobilephone[0] # 0X)) THEN
      Out.String("first name: "); Out.String(fname); Out.Ln;
      Out.String(" last name: "); Out.String(lname); Out.Ln;
      Out.String("     email: "); Out.String(email); Out.Ln;
